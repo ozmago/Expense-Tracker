@@ -1,17 +1,22 @@
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import Card from "../UI/Card";
-
+import ExpensesFilter from "../ExpensesFilter/ExpensesFilter";
 const Expenses = (props) => {
-
   //Create a function we can call from ExpensesFilter to pass up Year selection
+  const yearHandler = (yearSelected) => {
+    //Define state variable from child component
+    const selectedYear = {
+      yearSelected,
+    };
 
-  const selectedYearHandler = ()
-
-
+    //console.log and check if the selectedYear is logged from this parent component and the state is lifted
+    console.log(selectedYear);
+  };
 
   return (
-    <Card className='expenses'>
+    <Card className="expenses">
+      <ExpensesFilter onSelectYear={yearHandler} />
       <ExpenseItem
         date={props.items[0].date}
         title={props.items[0].title}

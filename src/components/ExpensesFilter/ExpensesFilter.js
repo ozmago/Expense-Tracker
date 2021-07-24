@@ -10,9 +10,9 @@ const ExpensesFilter = (props) => {
   const yearSelectHandler = (event) => {
     //Define state update function
     setSelectedYear(event.target.value);
-    console.log(selectedYear);
 
-    //Call function from Expenses to pass up selectedYear
+    //Call function from Expenses to pass up selectedYear to parent component
+    props.onSelectYear(selectedYear);
   };
 
   return (
