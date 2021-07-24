@@ -6,10 +6,13 @@ const ExpensesFilter = (props) => {
   //Define State
   const [selectedYear, setSelectedYear] = useState("");
 
-  //Define event handler
+  //Define event handler function
   const yearSelectHandler = (event) => {
     //Define state update function
     setSelectedYear(event.target.value);
+    console.log(selectedYear);
+
+    //Call function from Expenses to pass up selectedYear
   };
 
   return (

@@ -3,6 +3,13 @@ import "./Expenses.css";
 import Card from "../UI/Card";
 
 const Expenses = (props) => {
+
+  //Create a function we can call from ExpensesFilter to pass up Year selection
+
+  const selectedYearHandler = ()
+
+
+
   return (
     <Card className='expenses'>
       <ExpenseItem

@@ -2,34 +2,39 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = (props) => {
+  // Define State
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
 
+  //Define state update functions
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
   };
-
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
   };
-
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
   };
 
+  //Define form submit function
   const submitHandler = (event) => {
+    // Prevent page reload
     event.preventDefault();
 
-    // this is the object that can be passed up to parent components
-
+    // Combine the 3 states (title, date and amout) above into this object (expenseData)
+    //that can be passed up to parent components.
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
 
+    // Call function from NewExpense to pass up expenseData object
     props.onSaveExpenseData(expenseData);
+
+    //This is to clear the form after submission. Setting the values back to empty strings
     setEnteredTitle("");
     setEnteredDate("");
     setEnteredAmount("");
