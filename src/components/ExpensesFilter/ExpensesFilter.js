@@ -1,25 +1,18 @@
-import { useState } from "react";
-
 import "./ExpensesFilter.css";
 
 const ExpensesFilter = (props) => {
-  //Define State
-  const [selectedYear, setSelectedYear] = useState("");
-
   //Define event handler function
-  const yearSelectHandler = (event) => {
-    //Define state update function
-    setSelectedYear(event.target.value);
-
-    //Call function from Expenses to pass up selectedYear to parent component
-    props.onSelectYear(selectedYear);
+  const dropdownChangeHandler = (event) => {
+    //Define event listener parameter & call the props to pass up the event object
+    props.onChangeFilter(event.target.value);
   };
 
   return (
     <div className="expenses-filter">
       <div className="expenses-filter__control">
         <label>Filter by year</label>
-        <select onChange={yearSelectHandler}>
+        {/* Define onChange pointer and 2 way binding from Expenses state  */}
+        <select value={props.selected} onChange={dropdownChangeHandler}>
           <option value="2022">2022</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
